@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.WeatherSummary {
+  display: inline-block;
+  padding: 16px 48px;
+  text-align: center;
+  font-size: 1.2em;
+  background-color: #C4C4C4;
+  border: 1px solid #AEAEAE;
+}
+
+.WeatherSummary img {
+  margin: 16px 0;
+  width: 100px;
+  height: 100px;
+}
+
+.WeatherSummary-temps {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
