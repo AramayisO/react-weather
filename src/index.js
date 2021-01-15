@@ -10,35 +10,35 @@ ReactDOM.render(
     <WeatherSummary
       dayOfWeek='Mon'
       icon='https://picsum.photos/id/1/200/200'
-      highTemp={60} 
-      lowTemp={32} 
+      highTemp={56} 
+      lowTemp={34} 
     />
 
     <WeatherSummary 
       dayOfWeek='Tue' 
       icon='https://picsum.photos/id/2/200/200' 
-      highTemp={60} 
-      lowTemp={32} 
+      highTemp={56} 
+      lowTemp={37} 
     />
 
     <WeatherSummary 
       dayOfWeek='Wed' 
       icon='https://picsum.photos/id/3/200/200' 
-      highTemp={60} 
-      lowTemp={32} 
+      highTemp={58} 
+      lowTemp={36} 
     />
 
     <WeatherSummary 
       dayOfWeek='Thur' 
       icon='https://picsum.photos/id/4/200/200' 
-      highTemp={60} 
-      lowTemp={32} 
+      highTemp={50} 
+      lowTemp={33} 
     />
 
     <WeatherSummary 
       dayOfWeek='Fri' 
       icon='https://picsum.photos/id/5/200/200' 
-      highTemp={60} 
+      highTemp={48} 
       lowTemp={32} 
     />
   </>,
