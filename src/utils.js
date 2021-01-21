@@ -1,5 +1,5 @@
 export const getCoordinates = async (location) => {
-    const apiKey = process.env.REACT_APP_MAP_QUEST_API_KYE;
+    const apiKey = process.env.REACT_APP_MAP_QUEST_API_KEY;
     const apiUrl = 'http://www.mapquestapi.com/geocoding/v1/address';
     const response = await fetch(`${apiUrl}?key=${apiKey}&location=${location}`)
     const data = await response.json();
