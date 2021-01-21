@@ -29,3 +29,39 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+.WeatherDetails {
+  padding: 20px 20px 100px 20px;
+  background-color: #C4C4C4;
+  border: 1px solid #AEAEAE;
+}
+
+.WeatherDetails p {
+  font-size: 1.2em;
+}
+
+.WeatherDetails .text_large {
+  font-size: 3em;
+  font-weight: 500;
+}
+
+.WeatherDetails .details_wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.WeatherDetails .details_wrapper .icon_and_current {
+  display: flex;
+  align-items: flex-start;
+}
+
+.WeatherDetails .details_wrapper img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.WeatherDetails .details_wrapper .icon_and_current span {
+  line-height: .5em;
+  margin-right: 5px;
+}
