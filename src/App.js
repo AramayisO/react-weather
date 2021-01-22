@@ -14,6 +14,8 @@ class App extends React.Component {
       error: null,
       activeDay: 0
     };
+
+    this.handleActiveDayChange = this.handleActiveDayChange.bind(this)
   }
 
   componentDidMount() {
@@ -49,6 +51,12 @@ class App extends React.Component {
         })
       }
     )
+  }
+
+  handleActiveDayChange(newActiveDay) {
+    this.setState({
+      activeDay: newActiveDay
+    })
   }
 
   render() {
@@ -89,7 +97,8 @@ class App extends React.Component {
                     }                
                   })
                 }
-                activeDay={activeDay} 
+                activeDay={activeDay}
+                onActiveDayChanged={this.handleActiveDayChange}
               />
               {/* {weather.daily.map((data, index) => (
                 <WeatherSummary
