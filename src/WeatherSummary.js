@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import Temperature from "./Temperature";
+import WeatherIcon from './WeatherIcon';
 
 const WeatherSummary = ({ dayOfWeek, icon, highTemp, lowTemp }) => (
   <div className="WeatherSummary">
     <p>{dayOfWeek}</p>
-    <img src={icon} alt="weather icon" />
+    <WeatherIcon iconId={icon} />
     <div className="WeatherSummary-temps">
       <Temperature temp={highTemp} />
       <Temperature temp={lowTemp} />

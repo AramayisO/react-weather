@@ -16,3 +16,10 @@ export const getWeatherData = async (latitude, longitude, units='imperial') => {
     const { current, daily } = await response.json();
     return { current, daily };
 };
+
+
+export const millisecondsToDayOfWeek = (milliseconds) => {
+    const dow = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const date = new Date(milliseconds);
+    return dow[date.getDay()];
+}

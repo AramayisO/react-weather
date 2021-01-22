@@ -1,7 +1,7 @@
 import React from 'react';
-import { getWeatherData } from './utils';
+import { getWeatherData, millisecondsToDayOfWeek } from './utils';
 import WeatherDetails from './WeatherDetails';
-import WeatherSummary from './WeatherSummary';
+import FiveDayForecast from './FiveDayForecast';
 
 class App extends React.Component {
 
@@ -65,26 +65,36 @@ class App extends React.Component {
           : weather &&
             <>
               <WeatherDetails
-                  location="Fresno"
-                  dayOfWeek="Monday"
-                  weatherCondition="Partially cloudy"
-                  icon=""
+                  location="Current Location"
+                  dayOfWeek={millisecondsToDayOfWeek(weather.current.dt * 1000)}
+                  weatherCondition={weather.current.weather[0].description}
+                  icon={weather.current.weather[0].icon}
                   units="imperial"
-                  currentTemp={56}
-                  lowTemp={32}
-                  highTemp={60}
-                  precipitation={10} 
-                  humidity={30} 
-                  windSpeed={5}
+                  currentTemp={weather.current.temp}
+                  lowTemp={weather.daily[0].temp.min}
+                  highTemp={weather.daily[0].temp.max}
+                  precipitation={weather.daily[0].pop * 100} 
+                  humidity={weather.current.humidity} 
+                  windSpeed={weather.current.wind_speed}
               />
-              {weather.daily.map((data, index) => (
+              <FiveDayForecast forecast={
+                weather.daily.map(data => {
+                  return {
+                    dayOfWeek: millisecondsToDayOfWeek(data.dt * 1000),
+                    icon: data.weather[0].icon,
+                    highTemp: data.temp.max,
+                    lowTemp: data.temp.min
+                  }                  
+                })
+              } />
+              {/* {weather.daily.map((data, index) => (
                 <WeatherSummary
                   key={data.dt}
                   dayOfWeek='monday'
                   icon={`https://picsum.photos/id/${index}/200/200`}
                   highTemp={data.temp.max}
                   lowTemp={data.temp.min}/>
-              ))}
+              ))} */}
             </>
         }
       </>
