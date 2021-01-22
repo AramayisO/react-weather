@@ -65,3 +65,7 @@ body {
   line-height: .5em;
   margin-right: 5px;
 }
+
+.WeatherSummary-active {
+  background-color: #9EB4FF;
+}

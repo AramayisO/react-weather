@@ -11,7 +11,8 @@ class App extends React.Component {
     this.state = {
       isLoading: true,
       weather: null,
-      error: null
+      error: null,
+      activeDay: 0
     };
   }
 
@@ -52,7 +53,7 @@ class App extends React.Component {
 
   render() {
 
-    const { isLoading, weather, error } = this.state;
+    const { isLoading, weather, error, activeDay } = this.state;
 
     // Instead of doing nested ternary statements, I pulled this section out
     // into a variable to make the code a little bit easier to read. The
@@ -77,16 +78,19 @@ class App extends React.Component {
                   humidity={weather.current.humidity} 
                   windSpeed={weather.current.wind_speed}
               />
-              <FiveDayForecast forecast={
-                weather.daily.map(data => {
-                  return {
-                    dayOfWeek: millisecondsToDayOfWeek(data.dt * 1000),
-                    icon: data.weather[0].icon,
-                    highTemp: data.temp.max,
-                    lowTemp: data.temp.min
-                  }                  
-                })
-              } />
+              <FiveDayForecast 
+                forecast={
+                  weather.daily.map(data => {
+                    return {
+                      dayOfWeek: millisecondsToDayOfWeek(data.dt * 1000),
+                      icon: data.weather[0].icon,
+                      highTemp: data.temp.max,
+                      lowTemp: data.temp.min,
+                    }                
+                  })
+                }
+                activeDay={activeDay} 
+              />
               {/* {weather.daily.map((data, index) => (
                 <WeatherSummary
                   key={data.dt}

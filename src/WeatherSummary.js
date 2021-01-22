@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import Temperature from "./Temperature";
 import WeatherIcon from './WeatherIcon';
 
-const WeatherSummary = ({ dayOfWeek, icon, highTemp, lowTemp }) => (
-  <div className="WeatherSummary">
+const WeatherSummary = ({ dayOfWeek, icon, highTemp, lowTemp, isActive }) => (
+  <div className={`WeatherSummary ${isActive ? "WeatherSummary-active" : ""}`}>
     <p>{dayOfWeek}</p>
     <WeatherIcon iconId={icon} />
     <div className="WeatherSummary-temps">
