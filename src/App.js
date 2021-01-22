@@ -75,16 +75,16 @@ class App extends React.Component {
             <>
               <WeatherDetails
                   location="Current Location"
-                  dayOfWeek={millisecondsToDayOfWeek(weather.current.dt * 1000)}
-                  weatherCondition={weather.current.weather[0].description}
-                  icon={weather.current.weather[0].icon}
+                  dayOfWeek={millisecondsToDayOfWeek(weather.daily[activeDay].dt * 1000)}
+                  weatherCondition={weather.daily[activeDay].weather[0].description}
+                  icon={weather.daily[activeDay].weather[0].icon}
                   units="imperial"
                   currentTemp={weather.current.temp}
-                  lowTemp={weather.daily[0].temp.min}
-                  highTemp={weather.daily[0].temp.max}
-                  precipitation={weather.daily[0].pop * 100} 
-                  humidity={weather.current.humidity} 
-                  windSpeed={weather.current.wind_speed}
+                  lowTemp={weather.daily[activeDay].temp.min}
+                  highTemp={weather.daily[activeDay].temp.max}
+                  precipitation={weather.daily[activeDay].pop * 100} 
+                  humidity={weather.daily[activeDay].humidity} 
+                  windSpeed={weather.daily[activeDay].wind_speed}
               />
               <FiveDayForecast 
                 forecast={
