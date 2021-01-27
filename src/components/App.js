@@ -1,5 +1,5 @@
 import React from 'react';
-import { getWeatherData, millisecondsToDayOfWeek } from './utils';
+import { getWeatherData, millisecondsToDayOfWeek } from '../util/utils';
 import WeatherDetails from './WeatherDetails';
 import FiveDayForecast from './FiveDayForecast';
 import SearchBar from './SearchBar';
