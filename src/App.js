@@ -2,6 +2,7 @@ import React from 'react';
 import { getWeatherData, millisecondsToDayOfWeek } from './utils';
 import WeatherDetails from './WeatherDetails';
 import FiveDayForecast from './FiveDayForecast';
+import SearchBar from './SearchBar';
 
 class App extends React.Component {
 
@@ -16,6 +17,7 @@ class App extends React.Component {
     };
 
     this.handleActiveDayChange = this.handleActiveDayChange.bind(this)
+    this.newLocationSearched = this.newLocationSearched.bind(this);
   }
 
   componentDidMount() {
@@ -59,6 +61,10 @@ class App extends React.Component {
     })
   }
 
+  newLocationSearched(location) {
+    console.log(`You searched for ${location}`);
+  }
+
   render() {
 
     const { isLoading, weather, error, activeDay } = this.state;
@@ -73,6 +79,7 @@ class App extends React.Component {
           ? <p>{error}</p>
           : weather &&
             <>
+              <SearchBar onSubmit={this.newLocationSearched} />
               <WeatherDetails
                   location="Current Location"
                   dayOfWeek={millisecondsToDayOfWeek(weather.daily[activeDay].dt * 1000)}
