@@ -1,5 +1,5 @@
 import React from 'react';
-import { getWeatherData, millisecondsToDayOfWeek } from '../util/utils';
+import { getCoordinates, getWeatherData, millisecondsToDayOfWeek } from '../util/utils';
 import WeatherDetails from './WeatherDetails';
 import FiveDayForecast from './FiveDayForecast';
 import SearchBar from './SearchBar';
@@ -13,7 +13,8 @@ class App extends React.Component {
       isLoading: true,
       weather: null,
       error: null,
-      activeDay: 0
+      activeDay: 0,
+      location: 'Current Location'
     };
 
     this.handleActiveDayChange = this.handleActiveDayChange.bind(this)
@@ -61,13 +62,21 @@ class App extends React.Component {
     })
   }
 
-  newLocationSearched(location) {
-    console.log(`You searched for ${location}`);
+  async newLocationSearched(location) {
+    const {lat, lng} = await getCoordinates(location);
+    const {current, daily} = await getWeatherData(lat, lng);
+    this.setState({
+      location,
+      weather: {
+        current,
+        daily
+      }
+    })
   }
 
   render() {
 
-    const { isLoading, weather, error, activeDay } = this.state;
+    const { isLoading, weather, error, activeDay, location } = this.state;
 
     // Instead of doing nested ternary statements, I pulled this section out
     // into a variable to make the code a little bit easier to read. The
@@ -81,7 +90,7 @@ class App extends React.Component {
             <>
               <SearchBar onSubmit={this.newLocationSearched} />
               <WeatherDetails
-                  location="Current Location"
+                  location={location}
                   dayOfWeek={millisecondsToDayOfWeek(weather.daily[activeDay].dt * 1000)}
                   weatherCondition={weather.daily[activeDay].weather[0].description}
                   icon={weather.daily[activeDay].weather[0].icon}
